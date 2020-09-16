@@ -74,7 +74,3 @@ Colt Zero(on Twitch)/Olivine Ellva(on Discord).
 
 The base for this patcher was originally created and programmed by LagoLunatic, originally purposed
 as the Randomizer for: The Legend of Zelda: The Wind Waker
-
-### Running the patcher from source
-
-Source still needs to be cleaned up and is not currently available.
