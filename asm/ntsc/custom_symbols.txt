@@ -1,0 +1,2 @@
+805954bc set_charge_turn_speed
+805954e4 custom_charge_speed

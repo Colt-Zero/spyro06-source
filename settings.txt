@@ -1,0 +1,1 @@
+ppc_path = D:\Games\Emulators\devkitPro\devkitPPC

@@ -1,0 +1,1 @@
+"D:\Games\Emulators\devkitPro\devkitPPC\bin\powerpc-eabi-objdump.exe" --disassemble-zeroes -m powerpc -D -EB %1 >>%1.asm
