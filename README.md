@@ -14,6 +14,20 @@ Currently only supports files with their original names and formats, with the ex
 which support both the original tex format as well as png. This file replacement feature is new
 and mostly untested, so it likely will require further improvement.
 
+Version 1.0.3 update -
+New support for audio modding, now possible to extract dsp audio files with the Extract DSP audio
+batch file. You can mod audio by placing dsp files with the name of the entry you wish it to replace
+in a folder matching the name of the sound bank you are replacing it in.
+
+For example, if you want to replace the spfx_spyro_flinch1 audio entry from the sfx_world.gsb sound bank:
+You'd want custom_data_gc>sfx_world>spfx_spyro_flinch1.dsp
+
+To create a dsp audio file, you want to use VGAudio https://github.com/Thealexbarney/VGAudio/releases/latest
+to convert a wav audio file to dsp, with the given entry name you are trying to replace. VGAudio is also
+available for free at https://www.microsoft.com/en-us/p/vgaudio/9nblggh4s2wn?activetab=pivot:overviewtab
+Oh, and VGAudio can also convert dsp files extracted from the game to wav, if you wish to edit them, or use
+them for any other reason.
+
 ### Detailed How to use
 
 To use the provided assembly/disassembly scripts in their respective sub folders, you will first will need

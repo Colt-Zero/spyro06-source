@@ -45,4 +45,4 @@ with ZipFile("./dist/" + zip_name, "w") as zip:
   zip.write("./WindowsBuildBatchFiles/Extract Raw Files.bat", arcname="./Extract Raw Files.bat")
   zip.write("./WindowsBuildBatchFiles/Extract Textures.bat", arcname="./Extract Textures.bat")
   zip.write("./WindowsBuildBatchFiles/Extract Model Files.bat", arcname="./Experimental/Extract Model Files.bat")
-  zip.write("./WindowsBuildBatchFiles/Extract Raw Audio.bat", arcname="./Experimental/Extract Raw Audio.bat")
+  zip.write("./WindowsBuildBatchFiles/Extract DSP Audio.bat", arcname="./Extract DSP Audio.bat")

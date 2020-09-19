@@ -199,15 +199,23 @@ class Patcher:
     rkv = self.get_rkv("files/data_gc.rkv")
     if getattr( sys, 'frozen', False ) :
       audio_path = os.path.join(os.path.dirname(sys.executable), "Experimental/audio_gc")
-      dsp_path = os.path.join(os.path.dirname(sys.executable), "Experimental/dsp_gc")
+      dsp_path = os.path.join(os.path.dirname(sys.executable), "dsp_gc")
     else:
       audio_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Experimental/audio_gc")
-      dsp_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Experimental/dsp_gc")
+      dsp_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "dsp_gc")
     
     gsb_entries = rkv.get_gsb_entries()
     
     if not os.path.isdir(dsp_path):
       os.mkdir(dsp_path)
+    
+    if getattr( sys, 'frozen', False ) :
+      custom_data_gc = os.path.join(os.path.dirname(sys.executable), "custom_data_gc")
+    else:
+      custom_data_gc = os.path.join(os.path.dirname(os.path.abspath(__file__)), "custom_data_gc")
+    
+    if not os.path.isdir(custom_data_gc):
+      os.mkdir(custom_data_gc)
     
     #if not os.path.isdir(audio_path):
     #  os.mkdir(audio_path)

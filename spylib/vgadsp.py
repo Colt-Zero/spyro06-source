@@ -24,6 +24,17 @@ def SampleCountToNibbleCount(sampleCount):
   if extraSamples != 0:
     extraNibbles = extraSamples + 2
   return 16 * frames + extraNibbles
+  
+def SampleCountToNibbleCountRoundedUp(sampleCount):
+  frames = int(sampleCount / 14)
+  extraSamples = int(sampleCount % 14)
+  extraNibbles = 0
+  if extraSamples != 0:
+    extraNibbles = 16
+  return 16 * frames + extraNibbles
+  
+def SampleCountToByteCountRoundedUp(sampleCount):
+  return math.ceil(SampleCountToNibbleCountRoundedUp(sampleCount) / 2)
 
 def SampleCountToByteCount(sampleCount):
   return math.ceil(SampleCountToNibbleCount(sampleCount) / 2)
@@ -46,14 +57,18 @@ class Dsp:
   
   def read_dsp(self, file_data):
     sample_count = read_u32(file_data, 0x0)
-    byte_count = SampleCountToByteCount(sample_count)#data_len(file_data) - 0x60 # 0x60 is the header length
+    byte_count = SampleCountToByteCountRoundedUp(sample_count)#int(read_u32(file_data, 0x4) / 2)##data_len(file_data) - 0x60 # 0x60 is the header length
     sample_rate = read_u32(file_data, 0x8)
     coefs = []
     for i in range(16):
       coefs.append(swap16(read_s16(file_data, 0x1C + (i * 2))))
     file_data.seek(0x60)
     self.info = DSPADPCMINFO(coefs, 0x300, byte_count, sample_rate, sample_count)
-    self.audio_data = BytesIO(file_data.read(byte_count))
+    self.audio_data = BytesIO(file_data.read())
+    if byte_count > data_len(self.audio_data):
+      self.audio_data.seek(data_len(self.audio_data))
+      self.audio_data.write(b'\0'*(byte_count - data_len(self.audio_data)))
+    self.audio_data.seek(0)
   
   def write_dsp(self, output):
     if self.info.sample_count == 0:

@@ -134,13 +134,13 @@ class GSB:
       #      files would be nice
       #if next_gsb_data_offset > gsb_entry.data_offset:
       #  gsb_entry.data_offset = next_gsb_data_offset
+      gsb_entry.data_offset = next_gsb_data_offset
       if gsb_entry.new_data == 1:
         self.data.seek(self.gsb_data_list_offset + gsb_entry.data_offset)
-        self.data.write(b'\0'*gsb_entry.real_data_size)
+        #self.data.write(b'\0'*gsb_entry.real_data_size)
         gsb_entry.real_data_size = data_len(gsb_entry.data)
-        #gsb_entry.data_size = gsb_entry.real_data_size# + 0x10
-        gsb_entry.data_offset = self.archive_size - self.gsb_data_list_offset
-        self.archive_size += gsb_entry.real_data_size
+        #gsb_entry.data_offset = self.archive_size - self.gsb_data_list_offset
+        #self.archive_size += gsb_entry.real_data_size
       gsb_entry.save_changes()
       
       self.data.seek(self.gsb_data_list_offset + gsb_entry.data_offset)

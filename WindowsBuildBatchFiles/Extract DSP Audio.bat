@@ -6,7 +6,7 @@ goto eof
 :buildISO
 
 cd /d %~dp0
-py -3.6 ..\spyro_patcher.py -extractaudio "%originalISO%"
+"Spyro06 Patcher.exe" -extractaudio "%originalISO%"
 pause
 
 :eof

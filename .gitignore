@@ -1,4 +1,8 @@
 __pycache__
 a.out
-/build
-/dist
+build
+dist
+custom_data_gc
+data_gc
+media_gc
+custom_media_gc
